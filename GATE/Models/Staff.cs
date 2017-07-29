@@ -10,7 +10,7 @@ namespace GATE.Models
 {
     public class Staff
     {
-        [Key, ForeignKey("User")]
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -32,10 +32,13 @@ namespace GATE.Models
         public DateTime LastUpdate { get; set; }
 
         // Foreign Keys
-        public int UserId { get; set; }
-        
+        // public int UserId { get; set; } : Removed
+
         // Navigation Property
-        public User User { get; set; }
+        // public User User { get; set; } : Removed
+
+        // ICollection Properties
+        public virtual ICollection<User> Users { get; set; }
 
     }
 }

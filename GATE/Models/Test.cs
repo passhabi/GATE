@@ -23,6 +23,12 @@ namespace GATE.Models
         public DateTime CreationTime { get; set; }
         public DateTime LastUpdate { get; set; }
 
+        // Foreign Keys
+        public int? CourseId { get; set; }
+
+        // Navigation Properties
+        public virtual Course Course { get; set; }
+
         // ICollection Properties
         public virtual ICollection<StudentTests> StudentTests { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }

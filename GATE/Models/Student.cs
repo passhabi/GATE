@@ -11,7 +11,7 @@ namespace GATE.Models
 {
     public class Student
     {
-        [Key, ForeignKey("User")]
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -71,14 +71,15 @@ namespace GATE.Models
         public DateTime LastUpdate { get; set; }
 
         // Foreign Keys
-        public int UserId { get; set; }
+        // public int UserId { get; set; } : Removed
 
         // Navigation Properties
-        public virtual User User { get; set; }
+        // public virtual User User { get; set; } : Removed
 
         // ICollection Properties
         public virtual ICollection<StudentCourses> StudentCourses { get; set; }
         public virtual ICollection<StudentTests> StudentTests { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

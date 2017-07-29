@@ -183,6 +183,14 @@
     <Compile Include="Migrations\201707251306448_AddPasswordConfirmationToUser.Designer.cs">
       <DependentUpon>201707251306448_AddPasswordConfirmationToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707290625560_ChangeFKUser_FKStaff_FKStudentRelationships.cs" />
+    <Compile Include="Migrations\201707290625560_ChangeFKUser_FKStaff_FKStudentRelationships.Designer.cs">
+      <DependentUpon>201707290625560_ChangeFKUser_FKStaff_FKStudentRelationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707290630033_MoveCourseIdToTestTable.cs" />
+    <Compile Include="Migrations\201707290630033_MoveCourseIdToTestTable.Designer.cs">
+      <DependentUpon>201707290630033_MoveCourseIdToTestTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Level.cs" />
@@ -265,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707251306448_AddPasswordConfirmationToUser.resx">
       <DependentUpon>201707251306448_AddPasswordConfirmationToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707290625560_ChangeFKUser_FKStaff_FKStudentRelationships.resx">
+      <DependentUpon>201707290625560_ChangeFKUser_FKStaff_FKStudentRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707290630033_MoveCourseIdToTestTable.resx">
+      <DependentUpon>201707290630033_MoveCourseIdToTestTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
