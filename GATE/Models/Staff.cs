@@ -6,10 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace GATE.Models
-{
-    public class Staff
-    {
+namespace GATE.Models {
+    public class Staff {
         [Key]
         public int Id { get; set; }
 
@@ -24,11 +22,13 @@ namespace GATE.Models
 
         [Required]
         public bool ReadControl { get; set; }
+
         [Required]
         public bool FullControl { get; set; }
 
         [Required]
         public DateTime CreationTime { get; set; }
+
         public DateTime LastUpdate { get; set; }
 
         // Foreign Keys
@@ -38,7 +38,6 @@ namespace GATE.Models
         // public User User { get; set; } : Removed
 
         // ICollection Properties
-        public virtual ICollection<User> Users { get; set; }
-
+        // public virtual ICollection<User> Users { get; set; }
     }
 }

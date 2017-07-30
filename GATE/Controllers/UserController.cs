@@ -8,27 +8,24 @@ using GATE.Models;
 
 namespace GATE.Controllers
 {
-    public class UserController : Controller
+    public class UserController : DefaultController
     {
-        private readonly GateContext _gateContext;
-
-        public UserController()
-        {
-            _gateContext = new GateContext();
-        }
-
-        // GET: User
-        public ActionResult Index() => View();
+        private int _studentId;
 
         // GET: User/Create
         [HttpGet]
-        public ViewResult Create() => View();
+        public ViewResult Create(int studentId)
+        {
+            _studentId = studentId;
+            return View();
+        }
 
         // POST: User/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(User model)
         {
+            // TODO: Store _studentId to User Model, UserTypeId
             model.Confirmed = false;
             model.UserType = UserTypes.Student;
             model.CreationTime = DateTime.Now;
@@ -36,7 +33,7 @@ namespace GATE.Controllers
 
             if (!ModelState.IsValid)
                 return View(model);
-            _gateContext.Users.Add(model);
+            GateContext.Users.Add(model);
             // Send an email to the user
             return RedirectToAction("", "");
         }

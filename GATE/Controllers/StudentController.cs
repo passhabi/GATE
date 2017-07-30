@@ -7,23 +7,29 @@ using System.Web.Mvc;
 using GATE.DAL;
 using GATE.Models;
 
-namespace GATE.Controllers
-{
-    public class StudentController : Controller
-    {
-        private readonly GateContext _gateContext;
+namespace GATE.Controllers {
+    public class StudentController : DefaultController {
+        private readonly Random _random;
 
-        public StudentController()
-        {
-            _gateContext = new GateContext();
+        public StudentController() {
+            _random = new Random();
         }
 
-        // GET: Student
-        public ActionResult Index()
-        {
-            var students = _gateContext.Students;
-            return View(students);
+        // GET: Student/Create
+        public ActionResult Create() => View();
+
+        // POST: Student/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Student model) {
+            model.StudentNumber = _random.Next(1000, 1000000);
+            // Bug: Find a better way to set StudentNumber or just use Id Key of Student Model
+            if (!ModelState.IsValid)
+                return View(model);
+            GateContext.Students.Add(model);
+
+            return RedirectToAction("Create", "User", new {studentId = model.Id});
         }
-       
+
     }
 }

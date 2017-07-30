@@ -34,52 +34,44 @@ namespace GATE.Models
         public int NationalCode { get; set; }
 
         [MaxLength(50)]
-        [DisplayName("Father's Name")] // I didn't add "Message Error" to check out the default one.
+        [DisplayName("Father's Name")]
         public string FathersName { get; set; }
 
-        //[RegularExpression("")] // Add Birthday Regular Expression
+        // ToDo: Add Regular Expression for Birthday
         public DateTime Birthday { get; set; }
 
         [MaxLength(50)]
         [DisplayName("Born In")]
         public string BornCity { get; set; }
 
-        [Phone]
-        public int Telephone { get; set; }
+        // ToDo: Add Regular Expression for TelephoneNumber
+        public int? Telephone { get; set; }
 
         [RegularExpression("\\d{10}",
             ErrorMessage = "The national code is not valid, Consider entering the Postal Code without hyphen")]
         [DisplayName("Postal Code")]
-        public int PostalCode { get; set; }
+        public int? PostalCode { get; set; }
 
         public string Address { get; set; }
 
-        [Range(1, 4)]
-        public int Plaque { get; set; }
+        [Range(1, 999)]
+        public int? Plaque { get; set; }
 
-
-        // Identity, AutoIncrement
         [Required]
         [DisplayName("Student Number")]
-        public string StudentNumber { get; set; }
+        public int StudentNumber { get; set; }
 
         [Range(0,20)]
-        public int Gpa { get; set; }
+        public int? Gpa { get; set; }
 
         [Required]
         public DateTime CreationTime { get; set; }
         public DateTime LastUpdate { get; set; }
 
-        // Foreign Keys
-        // public int UserId { get; set; } : Removed
-
-        // Navigation Properties
-        // public virtual User User { get; set; } : Removed
-
         // ICollection Properties
         public virtual ICollection<StudentCourses> StudentCourses { get; set; }
         public virtual ICollection<StudentTests> StudentTests { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        // public virtual ICollection<User> Users { get; set; }
     }
 }
