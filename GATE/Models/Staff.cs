@@ -35,9 +35,9 @@ namespace GATE.Models {
         // public int UserId { get; set; } : Removed
 
         // Navigation Property
-        // public User User { get; set; } : Removed
+        // public CustomIdentityUser CustomIdentityUser { get; set; } : Removed
 
         // ICollection Properties
-        // public virtual ICollection<User> Users { get; set; }
+        // public virtual ICollection<CustomIdentityUser> Users { get; set; }
     }
 }

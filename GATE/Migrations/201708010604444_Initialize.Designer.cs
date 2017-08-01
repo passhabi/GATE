@@ -7,13 +7,13 @@ namespace GATE.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddUserTypeIdToUserModel : IMigrationMetadata
+    public sealed partial class Initialize : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUserTypeIdToUserModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialize));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707300604558_AddUserTypeIdToUserModel"; }
+            get { return "201708010604444_Initialize"; }
         }
         
         string IMigrationMetadata.Source

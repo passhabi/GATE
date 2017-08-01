@@ -1,18 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.Web.UI.WebControls;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GATE.Models
-{
-    public class Student
-    {
+namespace GATE.Models {
+    public class RegisterViewModel {
+
+        [Required]
+        public int StudentId { get; set; }
+
+        [Required]
         [Key]
-        public int Id { get; set; }
+        [DisplayName("User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Key]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [DisplayName("Confirm Password")]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+        public string Phone { get; set; }
+    }
+
+    public class RegisterStudentViewModel {
 
         [Required]
         [MaxLength(50)]
@@ -27,10 +49,11 @@ namespace GATE.Models
         [Required(ErrorMessage = "The field Family Name is Required")]
         public string FamilyName { get; set; }
 
+        [Key]
         [DisplayName("National Code")]
         // TODO: Add Regular Expression
         //[RegularExpression("0{1,2}.........",
-          //  ErrorMessage = "The national code is not valid, Consider entering the national code without hyphen")]
+        //  ErrorMessage = "The national code is not valid, Consider entering the national code without hyphen")]
         public int NationalCode { get; set; }
 
         [MaxLength(50)]
@@ -57,24 +80,9 @@ namespace GATE.Models
 
         [Range(1, 999)]
         public int? Plaque { get; set; }
+    }
 
-        [Required]
-        [DisplayName("Student Number")]
-        public int StudentNumber { get; set; }
-
-        [Range(0,20)]
-        public int? Gpa { get; set; }
-
-        [Required]
-        [Column(TypeName = "DateTime2")]
-        public DateTime CreationTime { get; set; }
-        [Column(TypeName = "DateTime2")]
-        public DateTime? LastUpdate { get; set; }
-
-        // ICollection Properties
-        public virtual ICollection<StudentCourses> StudentCourses { get; set; }
-        public virtual ICollection<StudentTests> StudentTests { get; set; }
-        public virtual ICollection<Payment> Payments { get; set; }
-        // public virtual ICollection<CustomIdentityUser> Users { get; set; }
+    public class MessageShowViewModel {
+        public string Message { get; set; }
     }
 }

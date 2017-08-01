@@ -15,8 +15,8 @@ namespace GATE.Migrations
                         Code = c.Int(nullable: false),
                         Title = c.String(nullable: false, maxLength: 50),
                         Fee = c.Short(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        LastUpdate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         LevelId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -30,8 +30,8 @@ namespace GATE.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Code = c.Short(nullable: false),
                         Title = c.String(nullable: false, maxLength: 50),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        LastUpdate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -42,7 +42,7 @@ namespace GATE.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         TrackingCode = c.String(),
                         Confirmed = c.Boolean(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         StudentId = c.Int(nullable: false),
                         TestId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
@@ -65,16 +65,16 @@ namespace GATE.Migrations
                         FamilyName = c.String(nullable: false, maxLength: 50),
                         NationalCode = c.Int(nullable: false),
                         FathersName = c.String(maxLength: 50),
-                        Birthday = c.DateTime(nullable: false),
+                        Birthday = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         BornCity = c.String(maxLength: 50),
-                        Telephone = c.Int(nullable: false),
-                        PostalCode = c.Int(nullable: false),
+                        Telephone = c.Int(),
+                        PostalCode = c.Int(),
                         Address = c.String(),
-                        Plaque = c.Int(nullable: false),
-                        StudentNumber = c.String(nullable: false),
-                        Gpa = c.Int(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        Plaque = c.Int(),
+                        StudentNumber = c.Int(nullable: false),
+                        Gpa = c.Int(),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        LastUpdate = c.DateTime(precision: 7, storeType: "datetime2"),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -84,8 +84,8 @@ namespace GATE.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Paid = c.Boolean(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        LastUpdate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         StudentId = c.Int(nullable: false),
                         CourseId = c.Int(nullable: false),
                     })
@@ -102,18 +102,15 @@ namespace GATE.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Grade = c.Int(nullable: false),
                         Accepted = c.Boolean(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         StudentId = c.Int(nullable: false),
                         TestId = c.Int(nullable: false),
-                        CourseId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: true)
                 .ForeignKey("dbo.Students", t => t.StudentId, cascadeDelete: true)
                 .ForeignKey("dbo.Tests", t => t.TestId, cascadeDelete: true)
                 .Index(t => t.StudentId)
-                .Index(t => t.TestId)
-                .Index(t => t.CourseId);
+                .Index(t => t.TestId);
             
             CreateTable(
                 "dbo.Tests",
@@ -122,10 +119,36 @@ namespace GATE.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 50),
                         Fee = c.Int(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        LastUpdate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        CourseId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Courses", t => t.CourseId)
+                .Index(t => t.CourseId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.Staffs",
@@ -136,41 +159,85 @@ namespace GATE.Migrations
                         FamilyName = c.String(nullable: false, maxLength: 50),
                         ReadControl = c.Boolean(nullable: false),
                         FullControl = c.Boolean(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        CreationTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        LastUpdate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Users",
+                "dbo.AspNetUsers",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        ConfirmPassword = c.String(),
+                        UserType = c.Int(nullable: false),
+                        CreationTime = c.DateTime(nullable: false),
+                        LastUpdate = c.DateTime(),
+                        UserTypeId = c.Int(nullable: false),
+                        Email = c.String(maxLength: 256),
+                        EmailConfirmed = c.Boolean(nullable: false),
+                        PasswordHash = c.String(),
+                        SecurityStamp = c.String(),
+                        PhoneNumber = c.String(),
+                        PhoneNumberConfirmed = c.Boolean(nullable: false),
+                        TwoFactorEnabled = c.Boolean(nullable: false),
+                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEnabled = c.Boolean(nullable: false),
+                        AccessFailedCount = c.Int(nullable: false),
+                        UserName = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+            
+            CreateTable(
+                "dbo.AspNetUserClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserName = c.String(nullable: false),
-                        Password = c.String(nullable: false),
-                        Email = c.String(nullable: false),
-                        CellPhone = c.Int(nullable: false),
-                        Confirmed = c.Boolean(nullable: false),
-                        UserType = c.Int(nullable: false),
-                        CreationTime = c.DateTime(nullable: false),
-                        LastUpdate = c.DateTime(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        ClaimType = c.String(),
+                        ClaimValue = c.String(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.AspNetUserLogins",
+                c => new
+                    {
+                        LoginProvider = c.String(nullable: false, maxLength: 128),
+                        ProviderKey = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.StudentTests", "TestId", "dbo.Tests");
             DropForeignKey("dbo.Payments", "TestId", "dbo.Tests");
+            DropForeignKey("dbo.Tests", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.StudentTests", "StudentId", "dbo.Students");
-            DropForeignKey("dbo.StudentTests", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.StudentCourses", "StudentId", "dbo.Students");
             DropForeignKey("dbo.StudentCourses", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Payments", "StudentId", "dbo.Students");
             DropForeignKey("dbo.Payments", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Courses", "LevelId", "dbo.Levels");
-            DropIndex("dbo.StudentTests", new[] { "CourseId" });
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Tests", new[] { "CourseId" });
             DropIndex("dbo.StudentTests", new[] { "TestId" });
             DropIndex("dbo.StudentTests", new[] { "StudentId" });
             DropIndex("dbo.StudentCourses", new[] { "CourseId" });
@@ -179,8 +246,12 @@ namespace GATE.Migrations
             DropIndex("dbo.Payments", new[] { "TestId" });
             DropIndex("dbo.Payments", new[] { "StudentId" });
             DropIndex("dbo.Courses", new[] { "LevelId" });
-            DropTable("dbo.Users");
+            DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.AspNetUsers");
             DropTable("dbo.Staffs");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetRoles");
             DropTable("dbo.Tests");
             DropTable("dbo.StudentTests");
             DropTable("dbo.StudentCourses");

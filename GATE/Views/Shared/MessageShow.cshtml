@@ -1,0 +1,14 @@
+﻿@model GATE.Models.MessageShowViewModel
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Message</h2>
+<div class="alert-success">
+    <h4>
+        @Html.DisplayTextFor(model => model.Message)
+    </h4>
+</div>
+<br>
+@Html.ActionLink("Back to Home", "Index", "Home", new {@class = "btn btn-default"})
