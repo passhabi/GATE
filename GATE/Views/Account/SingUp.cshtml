@@ -1,11 +1,11 @@
 ﻿@model GATE.Models.SingUpViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Singing Up";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
-<h3>Account</h3>
+<h2>Singing Up</h2>
+<h3>Register Account</h3>
 @using (Html.BeginForm("SingUp", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"})) {
     @Html.AntiForgeryToken()
     <hr/>

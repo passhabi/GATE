@@ -196,7 +196,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -272,7 +271,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\RegisterInfo.cshtml" />
+    <Content Include="Views\Account\CreateStudent.cshtml" />
     <Content Include="Views\Account\SingUp.cshtml" />
     <Content Include="Views\Shared\MessageShow.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -284,6 +283,7 @@
     <Content Include="Views\Tests\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
