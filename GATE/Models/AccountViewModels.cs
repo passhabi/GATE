@@ -7,8 +7,25 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GATE.Models {
-    public class RegisterViewModel {
+    public class MessageShowViewModel {
+        public string Message { get; set; }
+    }
 
+    public class LoginViewModel {
+        public string Message { get; set; }
+
+        [Required]
+        [DisplayName("User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(dataType: DataType.Password)]
+        public string Password { get; set; }
+
+        public bool BePersistence { get; set; }
+    }
+
+    public class SingUpViewModel {
         [Required]
         public int StudentId { get; set; }
 
@@ -34,8 +51,7 @@ namespace GATE.Models {
         public string Phone { get; set; }
     }
 
-    public class RegisterStudentViewModel {
-
+    public class RegisterInfoViewModel {
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
@@ -82,7 +98,16 @@ namespace GATE.Models {
         public int? Plaque { get; set; }
     }
 
-    public class MessageShowViewModel {
-        public string Message { get; set; }
+    public class StudentDetailsViewModel {
+        public int Id { get; set; }
+        public Student Student { get; set; }
+
+        [DisplayName("User Name")]
+        public string UserName { get; set; }
+
+        public string Email { get; set; }       
+
+        public string Phone { get; set; }
+
     }
 }

@@ -13,9 +13,10 @@ namespace GATE.Models
 {
     public enum UserTypes
     {
-        Student = 0,
-        Teacher = 1,
-        Staff = 2
+        Admin = 0,
+        Staff = 1,
+        Teacher = 2,
+        Student = 3,
     }
 
     public class CustomIdentityUser : IdentityUser
@@ -35,13 +36,9 @@ namespace GATE.Models
         public DateTime CreationTime { get; set; }
         public DateTime? LastUpdate { get; set; }
 
-
-        // ForeignKeys
-
         // UserTypeId pointing out to Staff and Student Model and 
         // there is no any relationship between CustomIdentityUser Model, Staff, and Student Model.
         public int UserTypeId { get; set; }
 
-        // Navigation Properties
     }
 }

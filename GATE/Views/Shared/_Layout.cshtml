@@ -1,42 +1,75 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - GATE</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/ Content / bootstrap.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/bootstrap.min.js")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="font-size: medium">
+<div class="bgcolor">
+    <nav class="navbar navbar-inverse navbar-toggleable-sm text-center" style="margin-bottom: 10px">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <ul class="navbar-nav">
+                <li class="nav-item nav-link">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="nav-item nav-link">@Html.ActionLink("About", "About", "Home")</li>
+                <li class="nav-item nav-link">@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+        </div>
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item nav-link ml-3">@Html.ActionLink("Sign In", "LogIn", "Account")</li>
+                <li class="nav-item nav-link">@Html.ActionLink("Register", "RegisterInfo", "Account")</li>
+            </ul>
+        </div>
+    </nav>
+    <header class="img-fluid">
+        <div class="container">
+            <table>
+                <tr>
+                    <td>
+                        <img id="logo" alt="GATE Logo" src="~/Content/img/logo.jpg"/>
+                    </td>
+                    <td style="padding: 50px 0 0 10px">
+                        <p class="text-uppercase" style="font-size: large">Gifted and Talented Education</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </header>
+    <div class="container body-content">
+        <div class="row">
+
+            <div class="col">
+                @RenderBody()
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="col-sm-3 text-center bg-inverse menu">
+                <h3>none</h3>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li>none</li>
+                    <li>none</li>
+                    <li>none</li>
+                    <li>none</li>
                 </ul>
             </div>
+
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+</div>
+<footer class="navbar-inverse" style="margin-bottom: 0;">
+    <div class="container">
+        <p style="padding-top: 20px; padding-bottom: 20px">&copy; @DateTime.Now.Year - GATE</p>
     </div>
+</footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>

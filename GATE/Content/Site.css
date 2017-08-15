@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,4 +22,34 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.bgcolor {
+    background-color: teal;
+}
+
+header {
+    background-image: url('img/header.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    width: auto;
+    margin-bottom: 20px;
+}
+header.img-fluid {
+    height: 300px;
+}
+
+#logo {
+    margin:50px 0 0 50px;
+    width: 80px;
+    height: 80px;
+    display: block;
+    background-size: cover;
+    font-size: 50px;
+}
+
+.menu {
+    padding-top: 20px;
 }
