@@ -2,32 +2,32 @@
 
 @{
     ViewBag.Title = "Manage Users";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
 }
 
-<h2>Manage Users</h2>
+<h2>Users Manager</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new {@class = "text-danger"})
+    @Html.ActionLink("Create New", "UserType", null, new { @class = "text-white" })
 </p>
 <table class="table">
     <tr>
-        <th class="hidden-sm-down">
+        <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        <th class="hidden-sm-down">
+        <th>
             @Html.DisplayNameFor(model => model.LastUpdate)
         </th>
-        <th class="hidden-sm-down">
+        <th>
             @Html.DisplayNameFor(model => model.UserType)
         </th>
-        <th class="hidden-sm-down">
+        <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th class="hidden-sm-down">
+        <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
-        <th class="hidden-sm-down"></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model) {
@@ -49,7 +49,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {id = item.UserTypeId}, new {@class = "text-warning"}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.UserTypeId}, new {@class = "text-danger"})
+                @Html.ActionLink("Delete", "Delete", new {id = item.UserTypeId, userTypes = item.UserType}, new {@class = "text-danger"})
             </td>
         </tr>
     }

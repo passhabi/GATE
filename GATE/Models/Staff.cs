@@ -13,6 +13,7 @@ namespace GATE.Models {
 
         [Required]
         [MaxLength(50)]
+        [DisplayName("First name")]
         public string FirstName { get; set; }
 
         [DisplayName("Family Name")]
@@ -21,15 +22,9 @@ namespace GATE.Models {
         public string FamilyName { get; set; }
 
         [Required]
-        public bool ReadControl { get; set; }
-
-        [Required]
-        public bool FullControl { get; set; }
-
-        [Required]
         public DateTime CreationTime { get; set; }
 
-        public DateTime LastUpdate { get; set; }
+        public DateTime? LastUpdate { get; set; }
 
         // Foreign Keys
         // public int UserId { get; set; } : Removed

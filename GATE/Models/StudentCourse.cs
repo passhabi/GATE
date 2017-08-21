@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,7 @@ using GATE.Models;
 
 namespace GATE.Models
 {
-    public class StudentCourses
+    public partial class StudentCourses
     {
         [Key]
         public int Id { get; set; }
@@ -19,7 +20,9 @@ namespace GATE.Models
         public DateTime LastUpdate { get; set; }
 
         // Foreign keys
+        [DisplayName("Student")]
         public int StudentId { get; set; }
+        [DisplayName("Course")]
         public int CourseId { get; set; }
 
         // Navigation Properties

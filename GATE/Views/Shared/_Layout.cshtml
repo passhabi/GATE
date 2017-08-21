@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Content/bootstrap.min.js")
 </head>
-<body style="font-size: medium">
+<body style="font-size: medium; padding-bottom: 20px; color: white;" >
 <div class="bgcolor">
     <nav class="navbar navbar-inverse navbar-toggleable-sm text-center" style="margin-bottom: 10px">
         <div class="container">
@@ -23,8 +23,7 @@
         </div>
         <div class="container">
             <ul class="navbar-nav">
-                <li class="nav-item nav-link ml-3">@Html.ActionLink("Sign In", "LogIn", "Account")</li>
-                <li class="nav-item nav-link">@Html.ActionLink("Register", "CreateStudent", "Account")</li>
+                @Html.Partial("_LoginPartial")
             </ul>
         </div>
     </nav>
@@ -44,21 +43,9 @@
     </header>
     <div class="container body-content">
         <div class="row">
-
             <div class="col">
                 @RenderBody()
             </div>
-            <div class="col-sm-3 text-center bg-inverse menu">
-                <h3>none</h3>
-                <hr/>
-                <ul class="list-unstyled">
-                    <li>none</li>
-                    <li>none</li>
-                    <li>none</li>
-                    <li>none</li>
-                </ul>
-            </div>
-
         </div>
     </div>
 </div>

@@ -25,33 +25,7 @@ namespace GATE.Models {
         public bool BePersistence { get; set; }
     }
 
-    public class SingUpViewModel {
-        [Required]
-        public int StudentId { get; set; }
-
-        [Required]
-        [Key]
-        [DisplayName("User Name")]
-        public string UserName { get; set; }
-
-        [Required]
-        [Key]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [DisplayName("Confirm Password")]
-        [Compare("Password")]
-        public string ConfirmPassword { get; set; }
-
-        public string Phone { get; set; }
-    }
-
-    public class RegisterInfoViewModel {
+    public class RegisterStudentViewModel {
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
@@ -98,6 +72,75 @@ namespace GATE.Models {
         public int? Plaque { get; set; }
     }
 
+    public class RegisterUserViewModel {
+        [Key]
+        public int StudentId { get; set; }
+
+        [Required]
+        [Key]
+        [DisplayName("User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Key]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [DisplayName("Confirm Password")]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+        public string Phone { get; set; }
+    }
+
+    public class UserTypeViewModel {
+        [Required]
+        [DisplayName("User Type")]
+        public UserTypes UserTypes { get; set; }
+    }
+
+    public class RegisterUserViaManagerViewModel {
+        [Required]
+        [Key]
+        [DisplayName("User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Key]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [DisplayName("Confirm Password")]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+        [Key]
+        public int Id { get; set; }
+
+        public UserTypes UserTypes { get; set; }
+
+        public string Phone { get; set; }
+
+        public string ErrorMessage { get; set; }
+    }
+
+    public class RegisterStaffViaManagerViewModel {
+        public Staff Staff { get; set; }
+        public UserTypes UserTypes { get; set; }
+        //public string Type { get; set; }
+        
+    }
+
     public class StudentDetailsViewModel {
         public int Id { get; set; }
         public Student Student { get; set; }
@@ -105,9 +148,8 @@ namespace GATE.Models {
         [DisplayName("User Name")]
         public string UserName { get; set; }
 
-        public string Email { get; set; }       
+        public string Email { get; set; }
 
         public string Phone { get; set; }
-
     }
 }

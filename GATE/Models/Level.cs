@@ -21,7 +21,7 @@ namespace GATE.Models
 
         [Required]
         public DateTime CreationTime { get; set; }
-        public DateTime LastUpdate { get; set; }
+        public DateTime? LastUpdate { get; set; }
 
         // ICollection Property
         public virtual ICollection<Course> Courses { get; set; }

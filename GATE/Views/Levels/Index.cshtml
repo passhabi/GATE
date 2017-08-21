@@ -1,21 +1,22 @@
-﻿@model IEnumerable<GATE.Models.Test>
+﻿@model IEnumerable<GATE.Models.Level>
 
 @{
-    ViewBag.Title = "Tests Manager";
+    ViewBag.Title = "Levels Manager";
     Layout = "~/Views/Shared/_ManagerLayout.cshtml";
 }
 
-<h2>Tests Manager</h2>
+<h2>Levels Manager</h2>
+
 <p>
-    @Html.ActionLink("Create New", "Create", null,  new { @class = "text-white" })
+    @Html.ActionLink("Create New", "Create", null, new {@class="text-white"})
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Code)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fee) 
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreationTime)
@@ -23,19 +24,16 @@
         <th>
             @Html.DisplayNameFor(model => model.LastUpdate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Course)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.Code)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Fee) $
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreationTime)
@@ -44,10 +42,7 @@
             @Html.DisplayFor(modelItem => item.LastUpdate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Course.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id } , new {@class="text-warning"}) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new {@class="text-warning"}) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "text-danger" })
         </td>
     </tr>

@@ -1,0 +1,26 @@
+﻿@model UserTypeViewModel
+@using GATE.Models
+@{
+    ViewBag.Title = "User Type";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2>User Type</h2>
+<hr/>
+<h3>What Kind of user type do you want to make? </h3>
+<br/>
+@using (Html.BeginForm("UserType", "Account", FormMethod.Post, new {@class = ""})) {
+    <div class="form-group">
+        <div class="col col-sm-offset-1">
+            @Html.EnumDropDownListFor(model => model.UserTypes, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col col-sm-offset-1">
+            <input type="submit" value="Continue" class="btn btn-primary" />
+        </div>
+    </div>
+}
+<div>
+@Html.ActionLink("Cancel", "Index", new {@class = "btn btn-secondary"})
+</div>

@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Access Denied";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2>No Permision</h2>
+<div class="bg-danger">
+    <h3 class="text-danger">You do not have the persmisions to see the page!</h3>
+    @Html.ActionLink("Back to home page","Index","Home",new {@class="text-info"})
+</div>
+
+

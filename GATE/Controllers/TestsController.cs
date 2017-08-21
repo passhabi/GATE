@@ -75,8 +75,6 @@ namespace GATE.Controllers {
         }
 
         // POST: Tests/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id) {
             var test = DbContext.Tests.Find(id);
             if (test == null)

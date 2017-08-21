@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -25,9 +26,10 @@ namespace GATE.Models
 
         [Required]
         public DateTime CreationTime { get; set; }
-        public DateTime LastUpdate { get; set; }
+        public DateTime? LastUpdate { get; set; }
 
         // Foreign keys
+        [DisplayName("Level")]
         public int LevelId { get; set; }
 
         // Navigation Property
