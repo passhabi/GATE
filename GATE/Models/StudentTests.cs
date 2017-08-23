@@ -19,6 +19,7 @@ namespace GATE.Models
         public bool Accepted { get; set; }
 
         [Required]
+        [DisplayName("Date")]
         public DateTime CreationTime { get; set; }
 
         // Foreign keys

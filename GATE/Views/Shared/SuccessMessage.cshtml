@@ -1,4 +1,4 @@
-﻿@model GATE.Models.MessageShowViewModel
+﻿@model GATE.Models.MessageViewModel
 @{
     ViewBag.Title = "Message";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +7,7 @@
 <h2>Message</h2>
 <div class="alert-success">
     <h4>
-        @Html.DisplayTextFor(model => model.Message)
+        @Html.DisplayTextFor(model => model.Text)
     </h4>
 </div>
 <br>

@@ -1,0 +1,48 @@
+﻿@using GATE.Models
+@model IEnumerable<GATE.Models.StudentTests>
+
+@{
+    ViewBag.Title = "Log";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var name = Model.ElementAt(0).Student.FirstName + " " +
+               Model.ElementAt(0).Student.FamilyName;
+}
+
+<h3>@name</h3>
+<h2>Log</h2>
+<br />
+<p>Grade Point Average: @Model.Average(m => m.Grade)</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Test)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accepted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationTime)
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accepted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationTime)
+            </td>
+        </tr>
+    }
+</table>

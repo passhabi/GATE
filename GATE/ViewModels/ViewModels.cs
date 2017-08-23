@@ -4,8 +4,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using GATE.Models;
 
-namespace GATE.Models {
+namespace GATE.ViewModels{
 
     public class CourseViewModel {
         [Key]
@@ -24,5 +25,9 @@ namespace GATE.Models {
 
     public class StudentCoursesViewModel {
         public IEnumerable<Course> Courses { get; set; }
+    }
+
+    public class MessageViewModel {
+        public string Text { get; set; }
     }
 }

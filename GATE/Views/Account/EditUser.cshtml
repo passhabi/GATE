@@ -1,0 +1,138 @@
+﻿@using System.Collections
+@using System.Web.Mvc.Html
+@using GATE.Models
+@model GATE.ViewModels.StudentDetailsViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2>Edit Student</h2>
+<br/>
+@using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"})) {
+    @Html.AntiForgeryToken()
+    <div>
+        <div>
+            @Html.LabelFor(model => model.UserName, new {@class = "control-label"}):
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Email, new {@class = "control-label"}):
+            @Html.DisplayFor(model => model.Email)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Student.Gpa, new {@class = "control-label"}):
+            @Html.DisplayFor(model => model.Student.Gpa, new {@class = "form-control"})
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Student.StudentNumber, new {@class = "control-label"}):
+            @Html.DisplayFor(model => model.Student.StudentNumber, new {@class = "form-control"})
+        </div>
+    </div>
+    <hr/>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.FirstName, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.FirstName, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.FirstName)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.NickName, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.NickName, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.NickName)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.FamilyName, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.FamilyName, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.FamilyName)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.NationalCode, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.NationalCode, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.NationalCode)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.FathersName, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.FathersName, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.FathersName)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.Birthday, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.Birthday, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.Birthday)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.BornCity, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.BornCity, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.BornCity)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Phone, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Phone, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Phone)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.Telephone, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.Telephone, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.Telephone)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.PostalCode, new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.PostalCode, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.PostalCode)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.Address, new {@class = "control-label  col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextAreaFor(model => model.Student.Address, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.Address)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.Plaque, new {@class = "control-label  col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Student.Plaque, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.Plaque)
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:5px;">
+                @Html.LabelFor(model => model.Student.LevelId, "Level", htmlAttributes: new {@class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(model => model.Student.LevelId, new SelectList(Model.Levels.ToList(), "Id", "Title"), htmlAttributes: new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Student.LevelId, "", new {@class = "text-danger"})
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    @Html.HiddenFor(model => model.Student.Id)
+    <div>
+        <div class="col-md-10">
+            <input type="submit" class="btn btn-default btn-lg" value="Edit"/>
+            @Html.ActionLink("Back", "Index", null, new {@class = "btn btn-secondary btn-lg"})
+        </div>
+    </div>
+}

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using GATE.DAL;
 using GATE.Models;
+using Microsoft.AspNet.Identity;
 
 namespace GATE.Controllers {
     [Authorize]
@@ -82,6 +83,19 @@ namespace GATE.Controllers {
             DbContext.Tests.Remove(test);
             DbContext.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult StudentTestList() {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+//            var student = DbContext.Students.FirstOrDefault(m => m.Id == user.UserTypeId);
+            var fetchTests =
+                from tests in DbContext.StudentTests
+                where tests.StudentId == user.UserTypeId
+                select tests
+                ;
+
+            return View(fetchTests.ToList());
         }
     }
 }

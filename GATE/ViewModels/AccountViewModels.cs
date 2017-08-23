@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GATE.Models;
 
-namespace GATE.Models {
-    public class MessageShowViewModel {
-        public string Message { get; set; }
-    }
+namespace GATE.ViewModels {
 
     public class LoginViewModel {
         public string Message { get; set; }
@@ -28,6 +24,7 @@ namespace GATE.Models {
     public class RegisterStudentViewModel {
         [Required]
         [MaxLength(50)]
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
 
         [MaxLength(50)]
@@ -145,6 +142,7 @@ namespace GATE.Models {
         public int Id { get; set; }
         public Student Student { get; set; }
 
+        public IEnumerable<Level> Levels { get; set; }
         [DisplayName("User Name")]
         public string UserName { get; set; }
 

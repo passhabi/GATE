@@ -13,21 +13,23 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayName("User Name")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastUpdate)
+            @Html.DisplayName("Last Update")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserType)
+            @Html.DisplayName("User Type")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayName("Phone Number")
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Options")
+        </th>
     </tr>
 
     @foreach (var item in Model) {
@@ -48,8 +50,8 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.UserTypeId}, new {@class = "text-warning"}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.UserTypeId, userTypes = item.UserType}, new {@class = "text-danger"})
+                @Html.ActionLink("Edit", "EditUser", new {id = item.UserTypeId}, new {@class = "text-warning"}) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserTypeId }, new {@class = "text-danger"})
             </td>
         </tr>
     }

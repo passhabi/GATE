@@ -1,0 +1,22 @@
+﻿@model GATE.Models.MessageViewModel
+@{
+    ViewBag.Title = "Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Error</title>
+</head>
+<body>
+<div style="display: block; background-color:lightcoral; border:brown solid thin; border-radius: 10px; padding: 20px; color: white;">
+    <h2 style="color: maroon;">Error !</h2>
+    <div style="padding-left: 50px;">
+        <h3>@Model.Text</h3>
+        <br/>
+        <a style="color: lightskyblue; font-size: medium; font-weight: bold" href="javascript:void(0);" onclick="history.go(-1);">Back</a>
+    </div>
+</div>
+</body>
+</html>

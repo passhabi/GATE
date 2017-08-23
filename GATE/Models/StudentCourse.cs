@@ -17,7 +17,6 @@ namespace GATE.Models
 
         [Required]
         public DateTime CreationTime { get; set; }
-        public DateTime LastUpdate { get; set; }
 
         // Foreign keys
         [DisplayName("Student")]

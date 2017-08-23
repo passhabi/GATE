@@ -71,6 +71,11 @@ namespace GATE.Models
         [Column(TypeName = "DateTime2")]
         public DateTime? LastUpdate { get; set; }
 
+        public Level Level { get; set; }
+
+        [DisplayName("Level")]
+        public int? LevelId { get; set; }
+
         // ICollection Properties
         public virtual ICollection<StudentCourses> StudentCourses { get; set; }
         public virtual ICollection<StudentTests> StudentTests { get; set; }

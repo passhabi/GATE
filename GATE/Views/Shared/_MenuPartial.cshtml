@@ -1,18 +1,9 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated) {
+@if (User.IsInRole("student")) {
     <h3>Menu</h3>
     <hr/>
     <ul class="list-unstyled font-weight-bold">
-        @if (User.IsInRole("admin")) {
-            <li>@Html.ActionLink("Users", "Index", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})</li>
-            <li>@Html.ActionLink("Courses", "Index", "Courses", routeValues: null, htmlAttributes: new {title = "Manage"})</li>
-            <li>@Html.ActionLink("Tests", "Index", "Tests", routeValues: null, htmlAttributes: new {title = "Manage"})</li>
-            <li>@Html.ActionLink("Level", "Index", "Levels", routeValues: null, htmlAttributes: new {title = "Manage"})</li>
-            <li><hr/></li>
-            <li>@Html.ActionLink("Quit Management", "Index", "Home", routeValues: null, htmlAttributes: new {title = "Manage"})</li>
-        }
-        else {
-            <li>@Html.ActionLink("Select unit", "Index", "Students")</li>
-        }
+            <li><a class="text-white" href="/Students/Index/">Units</a></li>
+            <li><a class="text-white" href="/Tests/StudentTestList/">Log</a></li>
     </ul>
 }
