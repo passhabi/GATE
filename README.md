@@ -1,2 +1,2 @@
 # GATE
-Gifted And Talented Education Website using ASP.NET MVC, C#
+Education for everyone using ASP.NET MVC, C#
